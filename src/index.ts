@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import axios from 'axios';
+import ReadLine from 'readline';
 import { translations } from './language';
 
 type Language = keyof typeof translations;
@@ -35,6 +36,11 @@ type WeatherData = {
   };
 };
 
+var rl = ReadLine.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 program
   .version('1.0.0')
   .description('A CLI weather tool using OpenWeatherMap API')
@@ -43,8 +49,16 @@ program
   .option('-l, --lang <string>', 'Language: en, de, fr, ru, ja, kr, es', 'en')
   .action(async (options) => {
     if (!options.city) {
-      console.error('Error: Please provide a city name with --city.');
-      process.exit(1);
+      try {
+        const answer = await new Promise<string>((resolve) => {
+          rl.question('Please enter a city name: ', resolve);
+        });
+        options.city = answer;
+      } catch (error) {
+        console.error('Error reading input:', error);
+      } finally {
+        rl.close();
+      }
     }
 
     try {
