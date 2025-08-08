@@ -13,7 +13,7 @@ A command-line tool to fetch current weather data from OpenWeatherMap API, with 
 2. Clone this repository
 3. Add your OpenWeatherMap API key to `.env`:
    ```env
-   OPENWEATHERMAP_API_KEY=your_api_key_here
+   OPENWEATHER_API_KEY=your_api_key_here
    ```
 
 ## Compilation
