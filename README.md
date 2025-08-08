@@ -49,7 +49,7 @@ bun build --compile ./src/index.ts --outfile weather
 - French (`fr`)
 - Russian (`ru`)
 - Japanese (`ja`)
-- Korean (`ko`)
+- Korean (`kr`)
 - Spanish (`es`)
 
 ## License
