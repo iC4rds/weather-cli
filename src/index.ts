@@ -42,12 +42,21 @@ var rl = ReadLine.createInterface({
 });
 
 program
-  .version('1.0.0')
-  .description('A CLI weather tool using OpenWeatherMap API')
-  .option('-c, --city <string>', 'Get weather by city name (e.g., "Berlin" or "London,GB")')
-  .option('-u, --units <string>', 'Units: metric, imperial, standard', 'metric')
-  .option('-l, --lang <string>', 'Language: en, de, fr, ru, ja, kr, es', 'en')
-  .action(async (options) => {
+  .version('1.0.0', '-v, --version', 'Display version')
+  .description('A CLI weather tool with multi-language support')
+  .addHelpText('after', '\nExamples:\n  weather --city Berlin --lang de\n  weather --city New York --units imperial')
+  .option('-c, --city <string>', 'City name (e.g. "Berlin" or "London,GB")')
+  .option('-u, --units <string>', 'Units: metric|imperial|standard', 'metric')
+  .option('-l, --lang <string>', 'Language: en|de|fr|ru|ja|ko|es', 'en')
+  .showHelpAfterError('(Use --help for usage information)');
+
+if (process.argv.some(arg => ['-h', '--help'].includes(arg))) program.help();
+if (process.argv.some(arg => ['-v', '--version'].includes(arg))) {
+  console.log(program.version());
+  process.exit(0);
+}
+
+program.action(async (options) => {
     if (!options.city) {
       try {
         const answer = await new Promise<string>((resolve) => {
