@@ -65,8 +65,6 @@ program.action(async (options) => {
         options.city = answer;
       } catch (error) {
         console.error('Error reading input:', error);
-      } finally {
-        rl.close();
       }
     }
 
@@ -98,6 +96,8 @@ program.action(async (options) => {
       console.log(`- ${t.wind_speed}: ${weatherData.wind.speed} m/s`);
     } catch (error) {
       console.error('Error:', error instanceof Error ? error.message : error);
+    } finally {
+      rl.close();
     }
   });
 
