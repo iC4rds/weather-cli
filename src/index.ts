@@ -46,7 +46,7 @@ program
   .description('A CLI weather tool with multi-language support')
   .addHelpText('after', '\nExamples:\n  weather --city Berlin --lang de\n  weather --city New York --units imperial')
   .option('-c, --city <string>', 'City name (e.g. "Berlin" or "London,GB")')
-  .option('-u, --units <string>', 'Units: metric|imperial|standard', 'metric')
+  .option('-u, --units <string>', 'Units: metric|imperial', 'metric')
   .option('-l, --lang <string>', 'Language: en|de|fr|ru|ja|ko|es', 'en')
   .showHelpAfterError('(Use --help for usage information)');
 
@@ -93,7 +93,7 @@ program.action(async (options) => {
       console.log(`- ${t.temperature}: ${weatherData.main.temp}°${options.units === 'metric' ? 'C' : 'F'}`);
       console.log(`- ${t.feels_like}: ${weatherData.main.feels_like}°${options.units === 'metric' ? 'C' : 'F'}`);
       console.log(`- ${t.humidity}: ${weatherData.main.humidity}%`);
-      console.log(`- ${t.wind_speed}: ${weatherData.wind.speed} m/s`);
+      console.log(`- ${t.wind_speed}: ${weatherData.wind.speed} ${options.units === 'metric' ? 'm/s' : 'mph'}`);
     } catch (error) {
       console.error('Error:', error instanceof Error ? error.message : error);
     } finally {

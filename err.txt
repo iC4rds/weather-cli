@@ -1,0 +1,11 @@
+Fehler: Die folgenden unversionierten Dateien im Arbeitsverzeichnis würden durch
+den Checkout überschrieben werden:
+	.gitignore
+	README.md
+	bun.lock
+	package.json
+	src/index.ts
+	src/language.ts
+	tsconfig.json
+Bitte verschieben oder entfernen Sie diese, bevor Sie Branches wechseln.
+Abbruch

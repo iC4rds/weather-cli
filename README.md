@@ -13,7 +13,11 @@ A command-line tool to fetch current weather data from OpenWeatherMap API, with 
 2. Clone this repository
 3. Add your OpenWeatherMap API key to `.env`:
    ```env
+<<<<<<< HEAD
    OPENWEATHER_API_KEY=your_api_key_here
+=======
+   OPENWEATHERMAP_API_KEY=your_api_key_here
+>>>>>>> e92d593 (chore: local changes)
    ```
 
 ## Compilation
@@ -49,5 +53,13 @@ bun build --compile ./src/index.ts --outfile weather
 - French (`fr`)
 - Russian (`ru`)
 - Japanese (`ja`)
+<<<<<<< HEAD
 - Korean (`kr`)
 - Spanish (`es`)
+=======
+- Korean (`ko`)
+- Spanish (`es`)
+
+## License
+MIT
+>>>>>>> e92d593 (chore: local changes)
