@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import axios from 'axios';
-import ReadLine from 'readline';
+import ReadLine from 'node:readline';
 import { translations } from './language';
 
 type Language = keyof typeof translations;
